@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-backdrop"></div>
+
+    <header class="header">
+        <h1>My To-Do List</h1>
+        <button type="button" id="settingsBtn" class="settings-btn" title="Change background">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            Background
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="input-section">
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a new task..."
+                maxlength="100"
+                autocomplete="off"
+            >
+            <button type="button" id="addBtn">Add Task</button>
+        </div>
+
+        <div class="tabs" role="tablist">
+            <button type="button" class="tab active" data-tab="todo" role="tab" aria-selected="true">To Do</button>
+            <button type="button" class="tab" data-tab="progress" role="tab" aria-selected="false">In Progress</button>
+            <button type="button" class="tab" data-tab="completed" role="tab" aria-selected="false">Completed</button>
+        </div>
+
+        <div class="tab-panels">
+            <div id="panel-todo" class="tab-panel active" role="tabpanel">
+                <ul id="taskList-todo" class="task-list"></ul>
+            </div>
+            <div id="panel-progress" class="tab-panel" role="tabpanel" hidden>
+                <ul id="taskList-progress" class="task-list"></ul>
+            </div>
+            <div id="panel-completed" class="tab-panel" role="tabpanel" hidden>
+                <ul id="taskList-completed" class="task-list"></ul>
+            </div>
+        </div>
+
+        <div id="message" class="message" aria-live="polite"></div>
+    </div>
+
+    <div id="settingsModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true" hidden>
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <h2 id="modalTitle">Change Background</h2>
+            <p class="modal-desc">Upload an image from your device or use the default.</p>
+            <div class="modal-actions">
+                <label class="btn btn-primary file-label">
+                    <input type="file" id="bgFileInput" accept="image/*" hidden>
+                    Choose Image
+                </label>
+                <button type="button" id="resetBgBtn" class="btn btn-secondary">Use Default</button>
+            </div>
+            <button type="button" id="closeModalBtn" class="modal-close" aria-label="Close">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
